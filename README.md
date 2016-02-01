@@ -1,7 +1,9 @@
 # Jade for Meteor
 
-This [Meteor](https://www.meteor.com/) smart package provides support for
-the [Jade](http://jade-lang.com/) template engine as a Spacebars alternative.
+[![Meteor Icon](http://icon.meteor.com/package/mquandalle:jade)][atmosphere]
+
+This [Meteor](https://www.meteor.com/) package provides some support for the
+[Jade](http://jade-lang.com/) template engine as a Spacebars alternative.
 
 Spacebars and Jade packages can coexist, Spacebars will continue to compile
 files ending with `.html` and Jade will take care of those ending with `.jade`.
@@ -11,24 +13,26 @@ files ending with `.html` and Jade will take care of those ending with `.jade`.
 * [Installation](#installation)
 * [Examples](#examples)
 * [Usage](#usage)
-	* [Templates](#templates)
-	* [HTML Tag attributes](#html-tag-attributes)
-	* [Components](#components)
+  * [Templates](#templates)
+  * [HTML Tag attributes](#html-tag-attributes)
+  * [Components](#components)
 * [Additional features](#additional-features)
-	* [else if](#else-if)
-	* [Unwrapped templates](#unwrapped-templates)
-	* [Anonymous helper](#anonymous-helper)
+  * [else if](#else-if)
+  * [Unwrapped templates](#unwrapped-templates)
+  * [Anonymous helper](#anonymous-helper)
+* [Unsupported Jade Features](#unsupported-features)
 * [Contributing](#contributing)
-	* [Implementation](#implementation)
-	* [License](#license)
-	* [Tests](#tests)
-	* [Tips](#tips)
+  * [Implementation](#implementation)
+  * [License](#license)
+  * [Tests](#tests)
+  * [Tips](#tips)
 * [Known bugs](#known-bugs)
   * [Using Jade in a package](#using-jade-in-a-package)
 
 ## Installation
 
-Meteor-jade is installable from atmosphere, the meteor package system:
+Meteor-jade is installable from [atmosphere][atmosphere], the meteor package
+system:
 
 ```sh
 $ meteor add mquandalle:jade
@@ -42,7 +46,7 @@ versions of those examples templates and even more in the
 
 ## Usage
 
-Meteor-jade basically works like pure Jade, so if you never use Jade before you
+Meteor-jade works somewhat like Jade, so if you never use Jade before you
 should take a look at the [documentation](http://jade-lang.com/reference/).
 
 There are some specifics rules relative to the Meteor way of handling templates.
@@ -77,6 +81,22 @@ but the last one is recommended:
 ```jade
 template(name="leaderboard")
   p Welcome #{player.name}
+```
+
+If you indent after a div or similar element, you can use `|` symbol in order jade not
+to confuse with tags:
+
+```jade
+template(name='leaderboard')
+  #content
+   | #{greeting}
+```
+
+You can also use `=` as a shortcut:
+```jade
+template(name='leaderboard')
+  #content
+   = greeting
 ```
 
 If you want to insert raw HTML you can use the `!{jade}` syntax which is
@@ -215,7 +235,7 @@ in a tag. The template will be named after the file name. We handle special
 
 ### Anonymous helper
 
-This one is not implemented yet but I'd like to write such kind of things:
+**This feature is not yet implemented.**  However, once implemented it could:
 
 ```jade
 if player.score > 10
@@ -226,6 +246,14 @@ It'll be useful for conditions (`if`, `else if` and `unless`) and inside
 attributes.
 
 See [related issue](https://github.com/mquandalle/meteor-jade/issues/1)
+
+## Unsupported Features
+
+Currently the following Jade features are not supported by `meteor-jade`.
+
+- Code
+- Case
+- Filter
 
 ## Contributing
 
@@ -252,7 +280,7 @@ This code is published under the [MIT license](LICENSE).
 Use the following command to run the tests:
 
 ```
-$ meteor test-packages --test-app-path . packages/*
+$ meteor test-packages packages/*
 ```
 
 ### Tips
@@ -260,16 +288,20 @@ $ meteor test-packages --test-app-path . packages/*
 If you want to buy me a beer, I proudly accept bitcoin tips:
 [1Jade7Fscsx2bF13iFVVFvcSUhe7eLJgSy][blockchain]
 
-[blockchain]: https://blockchain.info/address/1Jade7Fscsx2bF13iFVVFvcSUhe7eLJgSy
-
 ## Known bugs
 
 ### Using Jade in a package
 
-When using Jade in a package you need to lock the version to the [latest version](https://github.com/mquandalle/meteor-jade/blob/master/packages/jade/package.js#L3) manually. See [issue #83](https://github.com/mquandalle/meteor-jade/issues/83).
+When using Jade in a package you need to lock the version to the [latest
+version](https://github.com/mquandalle/meteor-jade/blob/master/packages/jade/package.js#L3) manually. See
+[issue #83](https://github.com/mquandalle/meteor-jade/issues/83).
+
 ```javascript
 api.use([
-    "templating",
-    "mquandalle:jade@0.4.1"
+  "templating",
+  "mquandalle:jade@0.4.5"
 ], "client");
 ```
+
+[blockchain]: https://blockchain.info/address/1Jade7Fscsx2bF13iFVVFvcSUhe7eLJgSy
+[atmosphere]: https://atmospherejs.com/mquandalle/jade

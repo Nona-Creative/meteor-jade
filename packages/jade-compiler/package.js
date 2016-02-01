@@ -1,18 +1,19 @@
 Package.describe({
   summary: "Compiler for the meteor-jade template language",
-  version: "0.4.4",
+  version: "0.4.5",
   name: "mquandalle:jade-compiler",
   git: "https://github.com/mquandalle/meteor-jade.git",
   documentation: "../../README.md"
 });
 
 Npm.depends({
- jade: "https://github.com/mquandalle/jade/tarball/f3f956fa1031e05f85be7bc7b67f12e9ec80ba37"
+  jade: "https://github.com/mquandalle/jade/tarball/f3f956fa1031e05f85be7bc7b67f12e9ec80ba37"
 });
 
 Package.onUse(function(api) {
   api.versionsFrom("METEOR@1.2.0.1");
   api.use([
+    'ecmascript',
     'underscore',
     'htmljs',
     'html-tools',

@@ -1,3 +1,30 @@
+## v0.4.9
+
+* Recompile jade files when their name change #199
+
+## v0.4.8
+
+* Fix a critical bug when running `meteor build` on 0.4.{6,7} #195 (again)
+
+## v0.4.7
+
+* Fix a critical bug when running `meteor build` on 0.4.6 #195
+
+## v0.4.6
+
+* Fix file caching on the new “Batch Plugin” API
+
+## v0.4.5
+
+* Support Meteor 1.2 “Batch Plugin” API
+
+## v0.4.4
+
+*requires Meteor 1.2*
+
+* Add a missing runtime dependency, `blaze`
+* Fix Meteor 1.2 compatibility #175
+
 ## v0.4.3
 
 * Support body attributes #121
